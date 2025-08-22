@@ -200,7 +200,7 @@ section {
 }
 
 .hero-text h2 {
-  color: var(--text-secondary);
+  color: rgba(99, 102, 241, 0.4);
   font-weight: 400;
   margin-bottom: 2rem;
   text-align: left;
@@ -235,7 +235,7 @@ section {
 
 .cta-button.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px #282828;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
 }
 
 .cta-button.secondary {
@@ -342,7 +342,7 @@ section {
 }
 
 .about-description strong {
-  color: var(--text-accent);
+  color: rgba(138, 140, 255, 0.4);
   font-weight: 600;
 }
 
@@ -399,7 +399,7 @@ section {
 
 .highlight-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(128, 128, 128, 0.15);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
 }
 
 .highlight-icon {
@@ -605,7 +605,7 @@ section {
 
 .education-level {
   font-size: 1.5rem;
-  color: #616161;
+  color: rgba(99, 102, 241, 0.4);
   margin: 0 0 0.25rem 0;
   font-weight: 500;
 }
@@ -842,7 +842,7 @@ section {
 
 .project-card:hover {
   transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
-  box-shadow: 0 15px 35px rgba(128, 128, 128, 0.2);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
 }
 
 .project-header {
@@ -1003,7 +1003,7 @@ section {
 
 .skill-card-exact:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(128, 128, 128, 0.15);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
   border-color: var(--text-accent);
 }
 
@@ -1113,7 +1113,7 @@ section {
 
 .certificate-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
 }
 
 .certificate-image-container {
@@ -1397,7 +1397,7 @@ section {
 
 .submit-btn-new:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(69, 69, 69, 0.3);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
 }
 
 .submit-btn-new:disabled {
@@ -1483,5 +1483,210 @@ section {
   .filter-btn {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
+  }
+}
+
+/* Dock Navbar Styles */
+.dock-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dock-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dock-navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dock-navbar.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dock-navbar.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+  pointer-events: none;
+}
+
+.dock-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dock-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-secondary);
+}
+
+.dock-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.2) translateY(-4px);
+  color: var(--text-primary);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dock-item.active {
+  background: var(--text-accent);
+  color: white;
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.dock-item.active:hover {
+  transform: scale(1.2) translateY(-4px);
+}
+
+.dock-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.dock-tooltip {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 1002;
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dock-navbar {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .dock-navbar.visible {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .dock-navbar.hidden {
+    transform: translateX(-50%) translateY(20px);
+  }
+  
+  .dock-container {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  
+  .dock-item {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .dock-toggle-btn {
+    top: auto;
+    bottom: 90px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .dock-tooltip {
+    bottom: auto;
+    top: -40px;
+  }
+  
+  .dock-item:hover .dock-tooltip {
+    transform: translateX(-50%) translateY(4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .dock-container {
+    gap: 4px;
+    padding: 6px 10px;
+  }
+  
+  .dock-item {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .dock-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .dock-toggle-btn {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dock-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .dock-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dock-item:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
 }
