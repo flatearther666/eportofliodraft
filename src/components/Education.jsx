@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Stepper, { Step } from './Stepper';
+import ScrambledText from './ScrambledText';
 
 const Education = () => {
   const educationData = [
@@ -9,7 +10,17 @@ const Education = () => {
       institution: "Morning Dew Montessori",
       level: "Preschool & Elementary",
       description: "Early Childhood Education",
-      details: "Started educational journey with Montessori approach, fostering creativity, independence, and love for learning from an early age.",
+      details: (
+        <ScrambledText 
+          className="scrambled-text-demo" 
+          radius={100} 
+          duration={1.2} 
+          speed={0.5} 
+          scrambleChars="01"
+        >
+          Started educational journey with Montessori approach, fostering creativity, independence, and love for learning from an early age.
+        </ScrambledText>
+      ),
       logo: "/mdm.png"
     },
     {
@@ -18,7 +29,17 @@ const Education = () => {
       institution: "Greenland Academy",
       level: "Elementary",
       description: "Primary Education",
-      details: "Continued elementary education with focus on building fundamental academic skills and character development.",
+      details: (
+        <ScrambledText 
+          className="scrambled-text-demo" 
+          radius={100} 
+          duration={1.2} 
+          speed={0.5} 
+          scrambleChars="01"
+        >
+          Continued elementary education with focus on building fundamental academic skills and character development.
+        </ScrambledText>
+      ),
       logo: "/ga.png"
     },
     {
@@ -27,7 +48,17 @@ const Education = () => {
       institution: "Agapeland Christian Academy",
       level: "Elementary & Junior High School",
       description: "Primary and Secondary Education",
-      details: "Completed both elementary and junior high school education. Developed strong academic foundation and discovered passion for technology and problem-solving.",
+      details: (
+        <ScrambledText 
+          className="scrambled-text-demo" 
+          radius={100} 
+          duration={1.2} 
+          speed={0.5} 
+          scrambleChars="01"
+        >
+          Completed both elementary and junior high school education. Developed strong academic foundation and discovered passion for technology and problem-solving.
+        </ScrambledText>
+      ),
       logo: "/aca.png"
     },
     {
@@ -36,7 +67,17 @@ const Education = () => {
       institution: "Mapúa University Intramuros",
       level: "Senior High School",
       description: "STEM Track",
-      details: "Completed Senior High School with STEM track, focusing on Science, Technology, Engineering, and Mathematics. Developed strong foundation in programming and mathematical concepts.",
+      details: (
+        <ScrambledText 
+          className="scrambled-text-demo" 
+          radius={100} 
+          duration={1.2} 
+          speed={0.5} 
+          scrambleChars="01"
+        >
+          Completed Senior High School with STEM track, focusing on Science, Technology, Engineering, and Mathematics. Developed strong foundation in programming and mathematical concepts.,
+        </ScrambledText>
+      ),
       logo: "/mu.png"
     },
     {
@@ -45,7 +86,17 @@ const Education = () => {
       institution: "Mapúa University Makati",
       level: "College",
       description: "Bachelor of Science in Computer Science",
-      details: "Currently pursuing my degree in Computer Science with specialization in Artificial Intelligence. Maintaining excellent academic performance while actively participating in coding competitions and tech communities.",
+      details: (
+        <ScrambledText 
+          className="scrambled-text-demo" 
+          radius={100} 
+          duration={1.2} 
+          speed={0.5} 
+          scrambleChars="01"
+        >
+           Currently pursuing my degree in Computer Science with specialization in Artificial Intelligence. Maintaining excellent academic performance while actively participating in coding competitions and tech communities.,
+        </ScrambledText>
+      ),
       logo: "/mu.png"
     }
   ];

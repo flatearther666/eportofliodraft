@@ -1,0 +1,61 @@
+.text-block {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+  line-height: 1.6;
+  text-align: justify;
+
+}
+
+.text-block p {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  word-wrap: break-word;
+  hyphens: none;
+  margin: 0;
+  line-height: inherit;
+  text-align: justify;
+  text-align-last: left;
+
+  letter-spacing: 0.01em;
+}
+
+.word {
+  display: inline;
+  white-space: pre;
+  margin-right: 0.1em;
+}
+
+.word:last-child {
+  margin-right: 0;
+}
+
+.scrambled-text-demo {
+  display: block;
+  width: 100%;
+}
+
+.char {
+  display: inline;
+  white-space: pre;
+}
+
+.scrambled-text-demo {
+  display: block;
+  width: 100%;
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+
+/* Ensure words don't break inappropriately */
+.text-block .char:not(:last-child) {
+  white-space: pre;
+}
+
+/* Handle spaces properly */
+.text-block .char[data-content=" "] {
+  white-space: pre;
+  word-break: normal;
+}

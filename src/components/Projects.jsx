@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ScrambledText from './ScrambledText';
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -7,7 +8,17 @@ const Projects = () => {
     ml: [
       {
         name: 'Heart Disease Risk Prediction',
-        description: 'A machine learning project for predicting heart disease risk based on patient data. Models: Logistic Regression, Support Vector Classification (SVC), and Random Forest Classifier.',
+        description: (
+          <ScrambledText 
+            className="scrambled-text-demo" 
+            radius={100} 
+            duration={1.2} 
+            speed={0.5} 
+            scrambleChars="01"
+          >
+            A machine learning project for predicting heart disease risk based on patient data. Models: Logistic Regression, Support Vector Classification (SVC), and Random Forest Classifier.
+          </ScrambledText>
+        ),
         image: 'hdrp.png',
         tags: ['Python'],
         github: 'https://github.com/flatearther666/Heart-Disease-Risk-Prediction',
@@ -15,7 +26,17 @@ const Projects = () => {
       },
       {
         name: 'Earfquake',
-        description: 'A machine learning tool for analyzing earthquake data and predicting seismic activities using advanced algorithms and data visualization.',
+        description: (
+          <ScrambledText 
+            className="scrambled-text-demo" 
+            radius={100} 
+            duration={1.2} 
+            speed={0.5} 
+            scrambleChars="01"
+          >
+             A machine learning tool for analyzing earthquake data and predicting seismic activities using advanced algorithms and data visualization.,
+          </ScrambledText>
+        ),
         image: 'eq.png',
         tags: ['Streamlit', 'Python'],
         liveDemo: 'https://earfquake-atjsxhtyuvwrcjwyfbjyx2.streamlit.app/',
@@ -24,7 +45,17 @@ const Projects = () => {
       },
       {
         name: 'Job Trends Analysis',
-        description: 'A data warehousing project analyzes over 5,000 global job postings from Google Jobs using data warehousing and mining techniques to uncover trends in in-demand skills and roles.',
+        description: (
+          <ScrambledText 
+            className="scrambled-text-demo" 
+            radius={100} 
+            duration={1.2} 
+            speed={0.5} 
+            scrambleChars="01"
+          >
+            A data warehousing project analyzes over 5,000 global job postings from Google Jobs using data warehousing and mining techniques to uncover trends in in-demand skills and roles.,
+          </ScrambledText>
+        ),
         image: 'jpt.png',
         tags: ['Python', 'PostgreSQL'],
         github: 'https://github.com/flatearther666/Analysis-of-Job-Market-Trends-Using-Google-Job-Postings',
@@ -34,7 +65,17 @@ const Projects = () => {
     software: [
       {
         name: 'Petchingu',
-        description: 'A Pet Social Platform connects pet lovers for adoption, lost-and-found alerts, and social interaction, creating a community that supports pet care and companionship.',
+        description: (
+          <ScrambledText 
+            className="scrambled-text-demo" 
+            radius={100} 
+            duration={1.2} 
+            speed={0.5} 
+            scrambleChars="01"
+          >
+            A Pet Social Platform connects pet lovers for adoption, lost-and-found alerts, and social interaction, creating a community that supports pet care and companionship.,
+          </ScrambledText>
+        ),
         image: 'petchingu.png',
         tags: ['React', 'AppWrite', 'JavaScript', 'SCSS'],
         github: 'https://github.com/clivebixby0/petchinguuu',
@@ -42,7 +83,17 @@ const Projects = () => {
       },
       {
         name: 'MyApt',
-        description: 'An Apartment Management System streamlines tasks like rent collection, maintenance, and tenant management, improving efficiency and communication.',
+        description: (
+          <ScrambledText 
+            className="scrambled-text-demo" 
+            radius={100} 
+            duration={1.2} 
+            speed={0.5} 
+            scrambleChars="01"
+          >
+            An Apartment Management System streamlines tasks like rent collection, maintenance, and tenant management, improving efficiency and communication.,
+          </ScrambledText>
+        ),
         image: 'myapt.png',
         tags: ['React', 'Firebase', 'JavaScript', 'SCSS'],
         liveDemo: 'https://myapthome.space/login',

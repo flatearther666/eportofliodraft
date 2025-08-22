@@ -369,7 +369,7 @@ section {
   display: block;
   font-size: 2rem;
   font-weight: bold;
-  color: var(--text-accent);
+  color: rgba(138, 140, 255, 0.4);
   margin-bottom: 0.3rem;
 }
 
@@ -378,6 +378,7 @@ section {
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-weight: bold;
 }
 
 .about-highlights {
@@ -425,7 +426,7 @@ section {
 }
 
 .highlight-item h4 {
-  color: var(--text-accent);
+  color: rgba(138, 140, 255, 0.4);
   margin-bottom: 0.3rem;
   font-size: 1rem;
 }

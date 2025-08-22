@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrambledText from './ScrambledText';
 
 const Hero = () => {
   return (
@@ -12,10 +13,18 @@ const Hero = () => {
             <h2 className="fade-in" style={{ animationDelay: '0.2s' }}>
               Developer
             </h2>
-            <p className="fade-in" style={{ animationDelay: '0.4s' }}>
-              I'm well-versed in Artificial Intelligence and Machine Learning, 
-              built upon a firm understanding of Software Engineering principles.
-            </p>
+            <div className="fade-in" style={{ animationDelay: '0.4s' }}>
+              <ScrambledText 
+                className="scrambled-text-demo" 
+                radius={100} 
+                duration={1.2} 
+                speed={0.5} 
+                scrambleChars="01"
+              >
+                I'm well-versed in Artificial Intelligence and Machine Learning, 
+                built upon a firm understanding of Software Engineering principles.
+              </ScrambledText>
+            </div>
             <div className="hero-cta fade-in" style={{ animationDelay: '0.6s' }}>
               <a href="#contact" className="cta-button primary">
                 Get In Touch

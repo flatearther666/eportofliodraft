@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ScrambledText from './ScrambledText';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +41,15 @@ const Contact = () => {
           <div className="contact-grid-new">
             <div className="contact-info-new">
               <h3>Let's Connect!</h3>
-              <p>I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.</p>
+              <ScrambledText 
+                className="scrambled-text-demo" 
+                radius={100} 
+                duration={1.2} 
+                speed={0.5} 
+                scrambleChars="01"
+              >
+                I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+              </ScrambledText>
               
               <div className="contact-links">
                 <a href="mailto:aguasynikko@gmail.com" className="contact-link">
