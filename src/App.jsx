@@ -8,9 +8,13 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
+import useScrollAnimation from './hooks/useScrollAnimation';
 import './App.css';
 
 function App() {
+  // Initialize scroll animations
+  useScrollAnimation();
+
   return (
     <div className="App">
       <DockNavbar />

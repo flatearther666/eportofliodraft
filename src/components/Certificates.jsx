@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 const Certificates = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const certificatesPerPage = 3;
 
   const certificates = [ 
@@ -220,7 +221,18 @@ const Certificates = () => {
   const currentCertificates = certificates.slice(startIndex, startIndex + certificatesPerPage);
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    if (page === currentPage || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    // Add exit animation
+    setTimeout(() => {
+      setCurrentPage(page);
+      // Add enter animation delay
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 300);
   };
 
   const handleViewCertificate = (link) => {
@@ -251,28 +263,45 @@ const Certificates = () => {
             <h2 className="gradient-text">Certificates</h2>
           </div>
           
-          <div className="certificates-grid-new">
-            {currentCertificates.map((cert, index) => (
-              <div key={index} className="certificate-card">
-                <div className="certificate-image-container">
-                  <div className="certificate-category">{getCategoryFromIssuer(cert.issuer)}</div>
-                  <img src={`/${cert.image}`} alt={cert.name} className="certificate-image" />
-                  {cert.grade && (
-                    <div className="certificate-grade">{cert.grade}</div>
-                  )}
+          <div className="certificates-container">
+            <div 
+              className={`certificates-grid-new ${
+                isTransitioning ? 'transitioning-out' : 'transitioning-in'
+              }`}
+              style={{
+                transform: isTransitioning ? 'translateX(-100px)' : 'translateX(0)',
+                opacity: isTransitioning ? 0 : 1,
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              {currentCertificates.map((cert, index) => (
+                <div 
+                  key={`${currentPage}-${index}`} 
+                  className="certificate-card"
+                  style={{
+                    animationDelay: `${index * 0.1}s`
+                  }}
+                >
+                  <div className="certificate-image-container">
+                    <div className="certificate-category">{getCategoryFromIssuer(cert.issuer)}</div>
+                    <img src={`/${cert.image}`} alt={cert.name} className="certificate-image" />
+                    {cert.grade && (
+                      <div className="certificate-grade">{cert.grade}</div>
+                    )}
+                  </div>
+                  <div className="certificate-info">
+                    <h3 className="certificate-title">{cert.name}</h3>
+                    <p className="certificate-institution">{cert.issuer}</p>
+                    <button 
+                      className="view-certificate-btn"
+                      onClick={() => handleViewCertificate(cert.link)}
+                    >
+                      View Certificate
+                    </button>
+                  </div>
                 </div>
-                <div className="certificate-info">
-                  <h3 className="certificate-title">{cert.name}</h3>
-                  <p className="certificate-institution">{cert.issuer}</p>
-                  <button 
-                    className="view-certificate-btn"
-                    onClick={() => handleViewCertificate(cert.link)}
-                  >
-                    View Certificate
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="pagination">
@@ -281,6 +310,7 @@ const Certificates = () => {
                 key={page}
                 className={`pagination-btn ${currentPage === page ? 'active' : ''}`}
                 onClick={() => handlePageChange(page)}
+                disabled={isTransitioning}
               >
                 {page}
               </button>
@@ -288,6 +318,42 @@ const Certificates = () => {
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        .certificates-container {
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .certificates-grid-new {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin: 2rem 0;
+        }
+        
+        .certificate-card {
+          animation: slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        
+        .transitioning-in .certificate-card {
+          animation: slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes slideInFromRight {
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        .pagination-btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      `}</style>
     </section>
   );
 };

@@ -5,6 +5,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
   
@@ -12,22 +13,47 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState('');
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission (replace with actual backend integration)
+    // Create Gmail compose URL with pre-filled content
+    const recipient = 'aguasynikko6@gmail.com';
+    const subject = encodeURIComponent(formData.subject || 'Contact Form Submission');
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Subject: ${formData.subject}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    // Create Gmail compose URL
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+    
+    // Open Gmail compose in a new tab
+    window.open(gmailUrl, '_blank');
+    
+    // Show confirmation message
+    setSubmitStatus('Opening Gmail to send your message!');
+    setIsSubmitting(false);
+    
+    // Reset form
     setTimeout(() => {
-      setSubmitStatus('Thank you for your message! I\'ll get back to you soon.');
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 2000);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      setSubmitStatus('');
+    }, 3000);
   };
 
   return (
@@ -52,7 +78,7 @@ const Contact = () => {
               </ScrambledText>
               
               <div className="contact-links">
-                <a href="mailto:aguasynikko@gmail.com" className="contact-link">
+                <a href="mailto:aguasynikko6@gmail.com" className="contact-link">
                   <span className="contact-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -105,6 +131,16 @@ const Contact = () => {
                   />
                 </div>
                 <div className="form-group">
+                  <input
+                    type="text"
+                    name="subject"
+                    placeholder="Subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
                   <textarea
                     name="message"
                     placeholder="Your Message"
@@ -119,7 +155,7 @@ const Contact = () => {
                   className="submit-btn-new"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? 'Opening Gmail...' : 'Send Message'}
                 </button>
                 {submitStatus && (
                   <p className="submit-status">{submitStatus}</p>

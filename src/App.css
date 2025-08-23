@@ -186,17 +186,29 @@ section {
 }
 
 /* Hero Section */
+#hero.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0; /* Remove the default section padding-top */
+}
+
 .hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  min-height: 80vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .hero-text h1 {
   margin-bottom: 1rem;
   text-align: left;
+  font-weight: bold;
 }
 
 .hero-text h2 {
@@ -681,13 +693,13 @@ section {
 }
 
 .education-stepper-container .next-button {
-  background: #6c6c6c !important;
+  background: rgba(87, 89, 214, 0.4) !important;
   border: none;
-  color: #fff !important;
+  color: #9a9a9a !important;
   padding: 0.75rem 2rem !important;
   border-radius: 12px !important;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -836,7 +848,7 @@ section {
   padding: 2rem;
   border-radius: 12px;
   border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
 }
@@ -1106,7 +1118,7 @@ section {
   border-radius: 12px;
   border: 1px solid var(--border-color);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   height: 400px; /* Fixed height for all cards */
   display: flex;
   flex-direction: column;
@@ -1386,10 +1398,10 @@ section {
 .submit-btn-new {
   width: 100%;
   padding: 1rem 2rem;
-  background: var(--gradient-accent);
+  background: rgba(87, 89, 214, 0.4);
   border: none;
   border-radius: 10px;
-  color: var(--bg-primary);
+  color: rgba(255, 255, 255, 0.948);
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -1398,7 +1410,7 @@ section {
 
 .submit-btn-new:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 25px rgba(59, 59, 59, 0.4);
 }
 
 .submit-btn-new:disabled {
@@ -1689,5 +1701,123 @@ section {
   
   .dock-item:hover {
     background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Add these styles at the end of your App.css file */
+
+/* Enhanced Section Animations */
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations for section content */
+.section-header {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+}
+
+.section.animate-in .section-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Content animations with delays */
+
+.section .about-content,
+.section .education-content,
+.section .projects-grid,
+.section .skills-grid,
+.section .certificates-grid,
+.section .contact-content {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+}
+
+.section.animate-in .about-content,
+.section.animate-in .education-content,
+.section.animate-in .projects-grid,
+.section.animate-in .skills-grid,
+.section.animate-in .certificates-grid,
+.section.animate-in .contact-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Individual item animations */
+.project-card,
+.skill-item,
+.certificate-card,
+.education-item {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section.animate-in .project-card,
+.section.animate-in .skill-item,
+.section.animate-in .certificate-card,
+.section.animate-in .education-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered delays for grid items */
+.section.animate-in .project-card:nth-child(1) { transition-delay: 0.1s; }
+.section.animate-in .project-card:nth-child(2) { transition-delay: 0.2s; }
+.section.animate-in .project-card:nth-child(3) { transition-delay: 0.3s; }
+.section.animate-in .project-card:nth-child(4) { transition-delay: 0.4s; }
+.section.animate-in .project-card:nth-child(5) { transition-delay: 0.5s; }
+.section.animate-in .project-card:nth-child(6) { transition-delay: 0.6s; }
+
+.section.animate-in .skill-item:nth-child(1) { transition-delay: 0.1s; }
+.section.animate-in .skill-item:nth-child(2) { transition-delay: 0.15s; }
+.section.animate-in .skill-item:nth-child(3) { transition-delay: 0.2s; }
+.section.animate-in .skill-item:nth-child(4) { transition-delay: 0.25s; }
+.section.animate-in .skill-item:nth-child(5) { transition-delay: 0.3s; }
+.section.animate-in .skill-item:nth-child(6) { transition-delay: 0.35s; }
+.section.animate-in .skill-item:nth-child(7) { transition-delay: 0.4s; }
+.section.animate-in .skill-item:nth-child(8) { transition-delay: 0.45s; }
+
+.section.animate-in .certificate-card:nth-child(1) { transition-delay: 0.1s; }
+.section.animate-in .certificate-card:nth-child(2) { transition-delay: 0.2s; }
+.section.animate-in .certificate-card:nth-child(3) { transition-delay: 0.3s; }
+.section.animate-in .certificate-card:nth-child(4) { transition-delay: 0.4s; }
+.section.animate-in .certificate-card:nth-child(5) { transition-delay: 0.5s; }
+.section.animate-in .certificate-card:nth-child(6) { transition-delay: 0.6s; }
+
+/* Special animation for hero section */
+
+/* Smooth scroll enhancement */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .section-header,
+  .section .about-content,
+  .section .education-content,
+  .section .projects-grid,
+  .section .skills-grid,
+  .section .certificates-grid,
+  .section .contact-content,
+  .project-card,
+  .skill-item,
+  .certificate-card,
+  .education-item {
+    transition: none;
+    opacity: 1;
+    transform: none;
   }
 }
